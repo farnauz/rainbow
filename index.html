@@ -1,0 +1,73 @@
+<html>
+	<head>
+	  <script src="http://fb.me/react-0.13.0.js"></script>
+	  <script src="http://fb.me/JSXTransformer-0.13.0.js"></script>
+	  <style> 
+	      body {background-color:skyblue;}
+	      .rainbow-animation {
+	          width: 1800px;
+	          height: 12px;
+	          position: relative;
+	          animation-name: rainbow;
+	          animation-duration: 9s;
+	          animation-iteration-count: infinite;
+	          animation-direction:alternate;
+	      }
+
+	      @keyframes rainbow {
+	          0% {left:0px; top:0px;}
+	          100% {background-color:transparent; left:600px; top:0px;}
+	      }
+	      
+	      .red{background-color:red;}
+	      .orange{background-color:orange;}
+	      .yellow{background-color:yellow;}
+	      .lightgreen{background-color:lightgreen;}
+	      .aqua{background-color:aqua;}
+	      .lightblue{background-color:lightblue;}
+	      .violet{background-color:violet;}
+	      .pink{background-color:pink;}
+	    </style>
+	</head>
+	<body>
+	  <div class="container">
+	  </div>
+	</body>
+
+	<script type="text/jsx">
+	  var DoubleRainbowCheckbox = React.createClass({
+	    render: function() {
+	      return <span>
+	      		<input type="checkbox" onChange={this.showDoubleRainbow} /> Double Rainbow             
+            </span>
+	    }
+	  });
+
+	  var Rainbow = React.createClass({
+	    render: function() {
+	     	return <span id="rainbow">
+	          <div className="rainbow-animation red"></div>
+	          <div className="rainbow-animation orange"></div>
+	          <div className="rainbow-animation yellow"></div>
+	          <div className="rainbow-animation lightgreen"></div>
+	          <div className="rainbow-animation aqua"></div>
+	          <div className="rainbow-animation lightblue"></div>
+	          <div className="rainbow-animation violet"></div>
+	          <div className="rainbow-animation pink"></div>
+	      	</span> 
+	    }
+	  });
+
+	  var ShowRainbow = React.createClass({
+	    render: function() {
+	      return <div>
+	      	<Rainbow/>
+	        <DoubleRainbowCheckbox/>
+	      </div> 
+	    }
+	  });
+
+	  var element = React.createElement(ShowRainbow);
+	  React.render(element, document.querySelector('.container'));
+	</script>
+</html>
